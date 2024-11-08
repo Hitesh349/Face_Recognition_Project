@@ -115,50 +115,71 @@ The entire system is designed for efficiency, using OpenCV for image processing 
 
 Here are some steps we did till now in our project-
 
-1.Install Dependencies-
+1. Install Dependencies
 
-tensorflow from opencv-python metaplotlib
+Install necessary libraries: OpenCV, imutils, NumPy, scikit-learn, and TensorFlow.
 
-2-Import Libraries-
+2.Import Libraries
 
-cv2,os,random,numpy,pylot,tensorflowkeras model
+Import required libraries: cv2, os, random, numpy, pickle, imutils, and sklearn.
 
-3-Set GPU Growth-
+3.Set Up File Paths
 
-To avoid OOM error by setting GPU memory consuption growth
+Define file paths for models, datasets, and output directories to organize the project structure.
 
-4-Create folder structure
+4.Load Face Detection Model
 
-postive
+Load a pre-trained face detection model using OpenCV's DNN module (e.g., Caffe model).
 
-negative
+5.Load Face Embedding Model
 
-anchor
+Load a pre-trained face embedding model (e.g., OpenFace) to convert detected faces into numerical vectors.
 
-5-collect positives and anchors
+6.Collect and Label Images
 
-Untar Labelled Faces in the Wild Dataset
+Capture images from a video stream or dataset, allowing the user to input names for each person.
 
-Collect Positive and Anchor Classes
+7.Data Preprocessing
 
-6- Load and Preprocess Images
+Resize images to a uniform size (e.g., 300x300 pixels) for consistent input to the face detection model.
+Normalize pixel values to prepare images for the embedding model.
 
-Get Image Directories
+8.Face Detection and Embedding Extraction
 
-Preprocessing - Scale and Resize
+Process each image to detect faces and extract embeddings if confidence is above a specified threshold.
 
-Create Labelled Dataset
+9.Serialize Data
 
-Build Train and Test Partition
+Serialize the extracted embeddings and associated names using Python's pickle module for future use.
 
-7-Model Engineering
+10.Data Visualization
 
-Build Embedding Layer
+Visualize sample images and their embeddings to ensure proper loading and preprocessing.
+Optionally, plot histograms or scatter plots of embeddings to analyze distribution.
 
-Build Distance Layer
+11.Train Recognition Model
 
-Make Siamese Model
+Load the serialized embeddings, encode labels with LabelEncoder, and train a classifier (e.g., SVC) for face recognition.
 
+12.Save Trained Model
+
+Save the trained recognition model and label encoder to disk for later use.
+
+13.Implement Real-time Face Recognition
+
+Create a script to perform real-time face recognition using a webcam, displaying detected faces with bounding boxes and names.
+
+14.Calculate Distance for Recognition
+
+Implement a function to calculate the Euclidean distance between input face vectors and stored embeddings for identification.
+
+15.Display Results
+
+Show output frames with bounding boxes around detected faces and their recognized names in real-time.
+
+16.Testing and Evaluation
+
+Test the model on a separate test dataset to evaluate accuracy and performance metrics (e.g., precision, recall).
  
 
  

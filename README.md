@@ -113,7 +113,7 @@ The entire system is designed for efficiency, using OpenCV for image processing 
 
  
 
-Here are some steps we did till now in our porject-
+Here are some steps we did till now in our project-
 
 1.Install Dependencies-
 

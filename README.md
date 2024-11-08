@@ -2,7 +2,7 @@
 
 /FaceRecognitionProject
 │
-├── README.md         # Documentation file providing an overview of the project
+├── README.md         # Documentation file providing an overview of the project                                                                                                                                                                                                                            .
 |
 ├── Data                           # (Heading) Data
 │   ├── /dataset                   # Directory for storing captured images for training and recognition

@@ -1,5 +1,5 @@
 #Data Preprocessing(Real time video recognition)
-This block is responsible for preparing each frame by resizing it and converting it to a blob for input into the DNN model.
+#This block is responsible for preparing each frame by resizing it and converting it to a blob for input into the DNN model.
 
 python
 Copy code

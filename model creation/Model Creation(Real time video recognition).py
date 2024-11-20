@@ -1,8 +1,6 @@
 #Model Creation(Real time video recognition)
-This block loads the pre-trained model and processes each frame to detect faces using the DNN model.
+#This block loads the pre-trained model and processes each frame to detect faces using the DNN model.
 
-python
-Copy code
 import cv2
 import imutils
 import time
@@ -46,9 +44,8 @@ def detect_faces_from_video():
     # Cleanup
     cv2.destroyAllWindows()
     vs.stop()
-Summary:
-Data Preprocessing: Resizes each frame and converts it into a blob for input into the DNN model.
-Data Visualization: Draws bounding boxes around detected faces and displays the frame with bounding boxes.
-Model Creation: Loads the pre-trained model and processes video frames to detect faces.
-This structure helps modularize the different components of the code for easier maintenance or reusability.
-'''
+#Summary:
+#Data Preprocessing: Resizes each frame and converts it into a blob for input into the DNN model.
+#Data Visualization: Draws bounding boxes around detected faces and displays the frame with bounding boxes.
+#Model Creation: Loads the pre-trained model and processes video frames to detect faces.
+#This structure helps modularize the different components of the code for easier maintenance or reusability.

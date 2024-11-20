@@ -1,8 +1,7 @@
 #Model Creation(Video recogniton)
-This block initializes the DNN model and processes each frame from the video for face detection.
+#This block initializes the DNN model and processes each frame from the video for face detection.
 
-python
-Copy code
+
 import cv2
 import numpy as np
 
@@ -39,10 +38,8 @@ def detectVidDNN(vidpath):
     # Release the video capture and close any OpenCV windows
     video_capture.release()
     cv2.destroyAllWindows()
-Summary:
-Data Preprocessing: Prepares the frames from the video for input into the DNN model by resizing and converting the frames into blobs.
-Data Visualization: Draws bounding boxes around detected faces and displays the frames with the bounding boxes.
-Model Creation: Loads the pre-trained DNN model and processes video frames to detect faces.
-Each part is separated into distinct functions and can be reused or modified independently.
-
-'''
+#Summary:
+#Data Preprocessing: Prepares the frames from the video for input into the DNN model by resizing and converting the frames into blobs.
+#Data Visualization: Draws bounding boxes around detected faces and displays the frames with the bounding boxes.
+#Model Creation: Loads the pre-trained DNN model and processes video frames to detect faces.
+#Each part is separated into distinct functions and can be reused or modified independently.

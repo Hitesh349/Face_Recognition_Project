@@ -1,9 +1,8 @@
 #Data Visualization(Real time video recognition)
 
-This block handles drawing bounding boxes around detected faces and displaying the output frame.
+#This block handles drawing bounding boxes around detected faces and displaying the output frame.
 
-python
-Copy code
+
 import cv2
 
 def visualize_detection(frame, detections, w, h):
@@ -29,5 +28,3 @@ def visualize_detection(frame, detections, w, h):
 
     # show the output frame
     cv2.imshow("Frame", frame)
-
-'''

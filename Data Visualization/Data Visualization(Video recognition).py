@@ -1,8 +1,7 @@
 #Data Visualization(Video recognition)
-This block is responsible for drawing bounding boxes around detected faces and displaying the output in the notebook.
+#This block is responsible for drawing bounding boxes around detected faces and displaying the output in the notebook.
 
-python
-Copy code
+
 import matplotlib.pyplot as plt
 import cv2
 

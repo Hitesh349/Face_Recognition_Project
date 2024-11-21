@@ -1,44 +1,62 @@
 # Face_Recognition_Project
 
-/FaceRecognitionProject
-│
-├── README.md         # Documentation file providing an overview of the project                                                                                                                                                                                                                            .
-|
-├── Data                           # (Heading) Data
-│   ├── /dataset                   # Directory for storing captured images for training and recognition
-│   └── /output                    # (Heading) Output
-│       ├── embeddings.pickle      # Stores the face embeddings
-│       ├── label_encoder.pickle   # Contains the label encoder for names
-│       ├── model.pickle           # The trained model for face recognition
-│       └── recognizer.pickle      # The recognizer model used for predictions
-|       └── le.pickle              # serialized object of a label encoder
-|
-├── Models                                               # (Heading) Models
-│   ├── deploy.prototxt                                  # Configuration file for the face detection model
-│   ├── res10_300x300_ssd_iter_140000.caffemodel         # Weights for the face detection model
-│   └── openface_nn4.small2.v1.t7                        # Pre-trained embedding model
-
-├── Data Pre-processing
-│   ├── imagecapture.py -- (Image Capture and Data Preparation)       # Script to capture images from the webcam
-|   ├── extract_embeddings.py -- (Extracting Face Embeddings)         # Script for extracting face embeddings from images
-|   
-├──  Model Creation
-│   └── train_model.py -- (Training the Model)                                        # (Heading) Model Creation
-|
-├── Data Visualization
-│   ├── recognize.py -- ( Real-time Face Image Recognition)             # Script to recognize faces in real-time Image
-│   └── recognize_video.py (Real-time Face Video Recognition)           # Script to recognize faces in real-time video
-|
-|
-├── Configuration and Documentation
-|    ├── .gitignore                      # (heading) Configuration and Documentation
-|    ├── .gitattributes                  # Defines attributes for paths in the Git repository
-|    ├──  print.py                       # Script for printing results or logs
+Configuration_and_Documentation
+gitattributes.txt
+gitignore.txt
+print.py
 
 
+Data_Preprocessing
+Image_Recognition
+Data_Preprocessing(Image recognition).py
+Real_Time_Video_Recognition
+Data_Preprocessing(Real time video recognition).py
+Video_Recognition
+Data_Preprocessing(Video recognition).py
+
+Data_Visualization
+Image_Recognition
+Data_Visualization(Image recognition).py
+Real_Time_Video_Recognition
+Data_Visualization(Real time video recognition).py
+Video_Recognition
+Data_Visualization(Video recognition).py
+Image_Recognition
+image_recognition(entire code).py
+image_recognitiondetection.py
+Real_Time_Face_Recognition
+real_time_face_recognition_code(entire_code).py
+Video_Recognition
+video_recognition(entire code).py
+videorecognitiondetection.py
 
 
+data
+MOT16-11.mp4
+group.jpg
+groupangle.jpeg
+groupangle.jpg
+groupbig.jpg
+groupsmall.jfif
+groupsmall.jpg
+tony.jpg
+videoplayback.mp4
 
+face_detection_model
+deploy.prototxt
+mmod_human_face_detector.dat
+opencv_face_detector_uint8.pb
+res10_300x300_ssd_iter_140000.caffemodel
+
+file
+adaboost.png
+cnn.png
+gradient.PNG
+hog.gif
+hog.png
+hog1.png
+hog2.png
+hog3.png
 
 
 

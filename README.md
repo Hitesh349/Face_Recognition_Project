@@ -114,114 +114,119 @@ Methodology
 The project is structured into several key stages, each contributing to the overall functionality of the face recognition system:
 
  
+Summary of the Face Recognition Project
+1. Introduction
+This project implements face recognition and detection using deep learning-based models in Python with OpenCV. It demonstrates the application of face recognition in images, real-time video streams, and video files. It uses a pre-trained DNN model based on the SSD framework for face detection.
 
-Image Capture:
+2. Tools and Libraries
+Programming Language: Python
+Libraries:
+OpenCV: For image and video processing.
+NumPy: For numerical operations.
+Matplotlib: For visualization.
+Imutils: For video stream resizing.
+Model Files:
+deploy.prototxt: Defines the structure of the DNN model.
+res10_300x300_ssd_iter_140000.caffemodel: Pre-trained model weights.
 
-A Python script captures images through a webcam, allowing users to input their names. Images are saved in a designated dataset path, organized by user identity, reinforcing structured data collection.
+3. Workflow
 
-Face Embedding Extraction:
+3.1 Image Face Detection (detectDNN)
+Purpose: Detect faces in a static image.
+Steps:
+Load the DNN model from deploy.prototxt and res10_300x300_ssd_iter_140000.caffemodel.
+Read the input image using OpenCV.
+Preprocess the image to create a blob (resize and normalize).
+Pass the blob to the DNN model for inference.
+Iterate over the detections and:
+Filter detections with confidence below 50%.
+Draw bounding boxes around detected faces.
+Annotate bounding boxes with confidence scores.
+Display the image using Matplotlib.
+Inputs: Path to the image (e.g., group.jpg, groupbig.jpg).
+Output: Annotated image with detected faces.
 
-Using OpenCV’s DNN module, facial embeddings are extracted from captured images. The script includes a face detector and a pre-trained embedding model to convert faces into numerical representations suitable for training.
+3.2 Real-Time Video Face Detection
+Purpose: Detect faces in real-time using a webcam.
+Steps:
+Load the DNN model.
+Initialize the webcam video stream.
+Continuously capture frames from the webcam.
+Preprocess each frame and pass it to the model.
+Detect faces and draw bounding boxes with confidence scores in real-time.
+Display the processed frames in a window.
+Terminate the process when the user presses the q key.
+Inputs: Webcam stream.
+Output: Real-time face detection displayed on the screen.
 
-Model Training:
+3.3 Video File Face Detection (detectVidDNN)
+Purpose: Detect faces in a video file.
+Steps:
+Load the DNN model.
+Capture video frames from the input video file.
+For each frame:
+Preprocess the frame to create a blob.
+Pass the blob to the DNN model for inference.
+Filter detections with confidence below 50%.
+Draw bounding boxes and annotate them with confidence scores.
+Display each processed frame using Matplotlib.
+Release video resources after processing all frames.
+Inputs: Path to the video file (e.g., videoplayback.mp4).
+Output: Annotated frames from the video with detected faces.
 
-Embeddings are labeled, and an SVM model is trained using scikit-learn, which learns to differentiate between various individuals based on their facial features. The model's performance is enhanced through stratified training/testing splits.
+4. Data Used
+Images:
+group.jpg, groupbig.jpg, groupangle.jpeg, groupsmall.jpg, tony.jpg.
+Videos:
+videoplayback.mp4.
 
-Real-Time Recognition:
+5. Directory Structure
+Configuration_and_Documentation: Project documentation files such as .gitattributes and .gitignore.
+Data_Visualization: Scripts for visualizing face detection in various scenarios.
+Image_Recognition: Scripts for detecting faces in images.
+Real_Time_Face_Recognition: Real-time face recognition script.
+Video_Recognition: Scripts for detecting faces in video files.
+Data_Preprocessing: Preprocessing scripts for face recognition tasks.
+Data: Dataset of images and videos used for testing.
+Face_Detection_Model: Model files (deploy.prototxt, res10_300x300_ssd_iter_140000.caffemodel) for DNN inference.
+Files: Supporting files
 
-A separate script implements real-time face recognition, utilizing the trained SVM model. It processes frames from the webcam, detects faces, extracts embeddings, and classifies them against the stored embeddings.
+6.Data Preprocessing
+Objective: Prepare data to be suitable for feeding into the model.
+Steps:
+Images and video frames were resized to dimensions of (300, 300) to meet model input requirements.
+Mean subtraction (104.0, 177.0, 123.0) was applied to normalize input data.
+Conversion of images from BGR (OpenCV format) to RGB was performed for visualization.
+A blob was created using cv2.dnn.blobFromImage to preprocess the images for the DNN model.
 
-Efficiency and Scalability:
+7.Data Visualization
+Static Images:
+Detected faces were highlighted with bounding boxes on static images using cv2.rectangle.
+Confidence scores for each detected face were displayed near the bounding boxes.
+Processed frames were visualized using matplotlib for better integration with Jupyter Notebooks.
+Video Frames:
+Frames from video streams were processed in real time, with bounding boxes and confidence scores displayed dynamically using cv2.imshow.
 
-The entire system is designed for efficiency, using OpenCV for image processing and scikit-learn for model training. By focusing on modular design, users can easily update or replace components (e.g., embedding models or classifiers) as new advancements in technology emerge.
+8.Model Creation
+Model Used:
+A pre-trained DNN face detection model was used:
+Weights: res10_300x300_ssd_iter_140000.caffemodel
+Configuration: deploy.prototxt.txt
+The model was based on the Single Shot MultiBox Detector (SSD) framework with ResNet-10 as the backbone.
+Integration with OpenCV:
+The model was loaded into OpenCV’s DNN module using cv2.dnn.readNetFromCaffe.
+Input parameters like size, mean, and scale were set using model.setInputParams.
 
- 
+9. Testing
+Static Image Testing:
+The model was tested on individual images, detecting multiple faces and annotating them with bounding boxes and confidence scores.
+Images of varying resolutions and angles were tested to ensure robustness.
+Video Stream Testing:
+Real-time face detection was implemented using webcam video streams (cv2.VideoCapture(0)) and pre-recorded videos.
+The system dynamically processed each frame, detected faces, and displayed annotated results in real time.
+10. Training Data
+While the model was pre-trained, it utilized a large dataset during its original training. The model can be fine-tuned on custom datasets if desired.
 
-Here are some steps we did till now in our project-
+The dataset for pre-training includes diverse faces across different ages, ethnicities, and conditions, ensuring generalization.
 
-1.Install Dependencies
-
-Install necessary libraries: OpenCV, imutils, NumPy, scikit-learn, and TensorFlow.
-
-2.Import Libraries
-
-Import required libraries: cv2, os, random, numpy, pickle, imutils, and sklearn.
-
-3.Set Up File Paths
-
-Define file paths for models, datasets, and output directories to organize the project structure.
-
-4.Load Face Detection Model
-
-Load a pre-trained face detection model using OpenCV's DNN module (e.g., Caffe model).
-
-5.Load Face Embedding Model
-
-Load a pre-trained face embedding model (e.g., OpenFace) to convert detected faces into numerical vectors.
-
-6.Collect and Label Images
-
-Capture images from a video stream or dataset, allowing the user to input names for each person.
-
-7.Data Preprocessing
-
-Resize images to a uniform size (e.g., 300x300 pixels) for consistent input to the face detection model.
-Normalize pixel values to prepare images for the embedding model.
-
-8.Face Detection and Embedding Extraction
-
-Process each image to detect faces and extract embeddings if confidence is above a specified threshold.
-
-9.Serialize Data
-
-Serialize the extracted embeddings and associated names using Python's pickle module for future use.
-
-10.Data Visualization
-
-Visualize sample images and their embeddings to ensure proper loading and preprocessing.
-Optionally, plot histograms or scatter plots of embeddings to analyze distribution.
-
-11.Train Recognition Model
-
-Load the serialized embeddings, encode labels with LabelEncoder, and train a classifier (e.g., SVC) for face recognition.
-
-12.Save Trained Model
-
-Save the trained recognition model and label encoder to disk for later use.
-
-13.Implement Real-time Face Recognition
-
-Create a script to perform real-time face recognition using a webcam, displaying detected faces with bounding boxes and names.
-
-14.Calculate Distance for Recognition
-
-Implement a function to calculate the Euclidean distance between input face vectors and stored embeddings for identification.
-
-15.Display Results
-
-Show output frames with bounding boxes around detected faces and their recognized names in real-time.
-
-16.Testing and Evaluation
-
-Test the model on a separate test dataset to evaluate accuracy and performance metrics (e.g., precision, recall).
- 
-
- 
-
- 
-
-Team Details-
-
-ANCEY -E23CSEU1784
-
-HITESH-E23CSEU1782
-
-PRIYANJAL-E23CSEU1797
-
- 
-
- 
-
- 
-
- 
+11.print.py
